@@ -1,9 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+//import {useState} from 'react';
+import LoginPage from './views/LoginPage';
+import { selectUsers } from './store/usersSlice.js';
+import { useSelector } from 'react-redux';
+import MainPage from './views/MainPage.jsx';
 
 function App() {
+
+  const user = useSelector(selectUsers);
+
   return (
-    <div className="App">
+    <>
+    {
+      user.currentUser ? 
+
+      <MainPage />
+      :
+      <LoginPage/>
+    }
+    </>
+  )
+  /* <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -19,7 +36,7 @@ function App() {
         </a>
       </header>
     </div>
-  );
+  );*/
 }
 
 export default App;
